@@ -15,6 +15,7 @@ use common\enums\AppEnum;
 use common\interfaces\AddonWidget;
 use backend\modules\common\forms\AddonsForm;
 use backend\controllers\BaseController;
+use yii\web\UnprocessableEntityHttpException;
 
 /**
  * Class AddonsController
@@ -241,6 +242,9 @@ class AddonsController extends BaseController
                 } catch (\Exception $e) {
                     // 回滚事务
                     $transaction->rollBack();
+                    if (YII_DEBUG) {
+                        throw new UnprocessableEntityHttpException($e->getMessage());
+                    }
 
                     return $this->message($e->getMessage(), $this->redirect(['index']), 'error');
                 }
