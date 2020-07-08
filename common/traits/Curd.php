@@ -150,6 +150,56 @@ trait Curd
     }
 
     /**
+     * 修改发布状态
+     * @return array|mixed
+     */
+    public function actionAjaxPublish(){
+        $id = Yii::$app->request->post('id');
+        $status = Yii::$app->request->post('status');
+
+        if (!($model = $this->modelClass::findOne($id))) {
+            return $this->message("找不到数据", $this->redirect(['index']), 'error');
+        }
+
+        $model->published_status = $status;
+
+        if($status == PublishedStatusEnum::PUBLISH || $status == PublishedStatusEnum::GATED1){
+            $model->published_user = Yii::$app->user->identity->username;;
+            $model->published_at = time();
+        }else{
+            $model->published_user = '';
+            $model->published_at = 0;
+        }
+
+        if ($model->save()) {
+            return ResultHelper::json(200, '修改成功');
+        }
+
+        return ResultHelper::json(422, $this->getError($model));
+    }
+
+    /**
+     * 修改排序号
+     * @return array|mixed
+     */
+    public function actionAjaxSort(){
+        $id = Yii::$app->request->post('id');
+        $sort = Yii::$app->request->post('sort');
+
+        if (!($model = $this->modelClass::findOne($id))) {
+            return $this->message("找不到数据", $this->redirect(['index']), 'error');
+        }
+
+        $model->sort = $sort;
+
+        if ($model->save()) {
+            return ResultHelper::json(200, '修改成功');
+        }
+
+        return ResultHelper::json(422, $this->getError($model));
+    }
+
+    /**
      * 返回模型
      *
      * @param $id
