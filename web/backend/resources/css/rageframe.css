@@ -250,19 +250,23 @@ a.desc:after {
     }
 }
 
+.box {
+    border-top: 0;
+    box-shadow: 0 0 0;
+}
 
+.box-header,
 .box-body,
-.box-footer {
-    padding: 20px 20px;
+.box-footer{
+    padding: 10px 20px;
 }
 
-.box-header {
-    padding: 20px 25px 10px 20px;
+.box-header{
+    border-bottom: 1px solid #F5F5F6;
 }
 
-.box-header > .box-tools {
-    right: 10px;
-    top: 20px;
+.box-tools{
+    padding: 0 20px;
 }
 
 .box-header > .fa,
@@ -271,11 +275,6 @@ a.desc:after {
 .box-header .box-title {
     font-size: 15px;
     color: #37474f;
-}
-
-.box {
-    border-top: 0;
-    box-shadow: 0 0 0;
 }
 
 .box-desc {
@@ -292,6 +291,16 @@ a.desc:after {
 
 .table-responsive {
     border: 0;
+}
+
+.table-tools{
+    margin: 10px 0;
+    text-align: right;
+}
+
+.table > thead > tr > th{
+    text-align: center;
+    background-color: #F5F5F6;
 }
 
 .treeview-menu > li > a {

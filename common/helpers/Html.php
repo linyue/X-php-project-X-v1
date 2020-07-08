@@ -26,7 +26,7 @@ class Html extends BaseHtml
     public static function create(array $url, $content = '创建', $options = [])
     {
         $options = ArrayHelper::merge([
-            'class' => "btn btn-primary btn-xs"
+            'class' => "btn btn-success"
         ], $options);
 
         $content = '<i class="icon ion-plus"></i> ' . $content;
@@ -47,6 +47,22 @@ class Html extends BaseHtml
         ], $options);
 
         return self::a($content, $url, $options);
+    }
+
+    /**
+     * 搜索
+     *
+     * @param array $options
+     * @return string
+     */
+    public static function search($content = '搜索', $options = [])
+    {
+        $options = ArrayHelper::merge([
+            'class' => "btn btn-primary"
+        ], $options);
+
+        $content = '<i class="icon ion-search"></i> ' . $content;
+        return self::submitButton($content, $options);
     }
 
     /**

@@ -229,6 +229,56 @@ $(document).on("click", ".openIframe", function (e) {
     return false;
 });
 
+/**
+ * 监听修改排序号事件
+ */
+$(document).on("change", ".rf-sort-input", function (e) {
+    let id = $(this).parents("tr").data("pid");
+    let sort = $(this).val();
+
+    $.ajax({
+        type: 'post',
+        url: 'ajax-sort',
+        data: {
+            id: id,
+            sort: sort,
+        },
+        success: function (res) {
+            if (res.code == 200) {
+                rfMsg(res.message);
+            }
+        },
+        error: function (ex) {
+            rfError(ex.responseText)
+        }
+    });
+})
+
+/**
+ * 监听修改发布状态事件
+ */
+$(document).on("change", ".rf-publish-select", function (e) {
+    let id = $(this).parents("tr").data("pid");
+    let status = $(this).val();
+
+    $.ajax({
+        type: 'post',
+        url: 'ajax-publish',
+        data: {
+            id: id,
+            status: status,
+        },
+        success: function (res) {
+            if (res.code == 200) {
+                rfMsg(res.message);
+            }
+        },
+        error: function (ex) {
+            rfError(ex.responseText)
+        }
+    });
+})
+
 layer.config({
     extend: 'style.css', //加载您的扩展样式
 });
@@ -408,5 +458,5 @@ function rfText(text) {
         return text;
     }
 
-    return '小手一抖就打开了一个框';
+    return '';
 }

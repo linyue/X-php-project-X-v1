@@ -81,7 +81,7 @@ class Files extends InputWidget
 
         $this->boxId = md5($this->name) . StringHelper::uuid('uniqid');
         $this->themeConfig = ArrayHelper::merge([
-            'select' => true, // 显示选择文件
+            'select' => false, // 显示选择文件
             'sortable' => true, // 是否开启排序
         ], $this->themeConfig);
 
@@ -117,7 +117,7 @@ class Files extends InputWidget
             'duplicate' => true,
 
             /**-------------- 自定义的参数 ----------------**/
-            'independentUrl' => false, // 独立上传地址,不受全局的地址上传影响
+            'independentUrl' => true, // 独立上传地址,不受全局的地址上传影响
             'md5Verify' => $this->typeConfig['md5Verify'], // md5 校验
             'mergeUrl' => Url::to(['/file/merge']),
             'getOssPathUrl' => Url::to(['/file/get-oss-path']),

@@ -26,9 +26,9 @@ return [
         // 图片
         'images' => [
             'originalName' => false, // 是否保留原名
-            'fullPath' => true, // 是否开启返回完整的文件路径
+            'fullPath' => false, // 是否开启返回完整的文件路径
             'takeOverUrl' => '', // 配置后，接管所有的上传地址
-            'drive' => 'local', // 默认本地 可修改 qiniu/oss/cos 上传
+            'drive' => 'oss', // 默认阿里云 可修改 local/qiniu/oss/cos 上传
             'md5Verify' => true, // md5 校验
             'maxSize' => 1024 * 1024 * 10,// 图片最大上传大小,默认10M
             'extensions' => ["png", "jpg", "jpeg", "gif", "bmp"],// 可上传图片后缀不填写即为不限
@@ -46,10 +46,10 @@ return [
         ],
         // 视频
         'videos' => [
-            'originalName' => true, // 是否保留原名
+            'originalName' => false, // 是否保留原名
             'fullPath' => true, // 是否开启返回完整的文件路径
             'takeOverUrl' => '', // 配置后，接管所有的上传地址
-            'drive' => 'local', // 默认本地 可修改 qiniu/oss/cos 上传
+            'drive' => 'oss', // 默认阿里云 可修改 local/qiniu/oss/cos 上传
             'md5Verify' => true, // md5 校验
             'maxSize' => 1024 * 1024 * 50,// 最大上传大小,默认50M
             'extensions' => ['mp4', 'mp3'],// 可上传文件后缀不填写即为不限
@@ -60,10 +60,10 @@ return [
         ],
         // 语音
         'voices' => [
-            'originalName' => true, // 是否保留原名
+            'originalName' => false, // 是否保留原名
             'fullPath' => true, // 是否开启返回完整的文件路径
             'takeOverUrl' => '', // 配置后，接管所有的上传地址
-            'drive' => 'local', // 默认本地 可修改 qiniu/oss/cos 上传
+            'drive' => 'oss', // 默认阿里云 可修改 local/qiniu/oss/cos 上传
             'md5Verify' => true, // md5 校验
             'maxSize' => 1024 * 1024 * 30,// 最大上传大小,默认30M
             'extensions' => ['amr', 'mp3'],// 可上传文件后缀不填写即为不限
@@ -74,7 +74,7 @@ return [
         ],
         // 文件
         'files' => [
-            'originalName' => true, // 是否保留原名
+            'originalName' => false, // 是否保留原名
             'fullPath' => true, // 是否开启返回完整的文件路径
             'takeOverUrl' => '', // 配置后，接管所有的上传地址
             'drive' => 'local', // 默认本地 可修改 qiniu/oss/cos 上传

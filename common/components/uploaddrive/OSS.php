@@ -83,6 +83,22 @@ class OSS extends DriveInterface
         ];
     }
 
+
+    /**
+     * 返回oss文件完整地址
+     * @param $path
+     * @return string
+     */
+    public static function fullPath($path){
+        if(!$path){
+            return '';
+        }
+
+        $config = Yii::$app->debris->configAll(true);
+
+        return substr(strtolower($path), 0,4) == 'http' ? $path : ($config['storage_aliyun_transport_protocols'] . '://' . $config['storage_aliyun_user_url']  . $path);
+    }
+
     /**
      * 截止日期
      *

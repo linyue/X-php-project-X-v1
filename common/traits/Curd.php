@@ -2,6 +2,7 @@
 
 namespace common\traits;
 
+use common\enums\PublishedStatusEnum;
 use Yii;
 use yii\data\Pagination;
 use yii\base\InvalidConfigException;

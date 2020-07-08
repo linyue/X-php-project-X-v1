@@ -7,6 +7,7 @@ $params = array_merge(
 );
 
 return [
+    'name' => 'X',
     'id' => 'backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -28,6 +29,10 @@ return [
         /** ------ oauth2 ------ **/
         'oauth2' => [
             'class' => 'backend\modules\oauth2\Module',
+        ],
+        /** ------ 保险模块 ------ **/
+        'insurance' => [
+            'class' => 'backend\modules\insurance\Module',
         ],
     ],
     'components' => [
